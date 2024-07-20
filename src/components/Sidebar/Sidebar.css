@@ -53,6 +53,7 @@
 
 .sidebar .recent-entry:hover {
   background-color: #e2e6eb;
+  transition: 0.6s;
 }
 
 .sidebar .bottom {
