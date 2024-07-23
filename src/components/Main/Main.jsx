@@ -17,6 +17,12 @@ function Main() {
     input,
     setInput,
   } = useContext(Context);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSent();
+    // setInput("");
+  };
   return (
     <div className="main">
       <div className="nav">
@@ -24,43 +30,63 @@ function Main() {
         <img src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
-        <div className="greet">
-          <p>
-            <span>Hello there </span>👋
-          </p>
-          <p>How can I help you today?</p>
-        </div>
-        <div className="cards">
-          <div className="card">
-            <p>Generate unit tests for the following C# function</p>
-            <img src={assets.compass_icon} alt="" />
+        {!showResult ? (
+          <>
+            <div className="greet">
+              <p>
+                <span>Hello there </span>👋
+              </p>
+              <p>How can I help you today?</p>
+            </div>
+            <div className="cards">
+              <div className="card">
+                <p>Generate unit tests for the following C# function</p>
+                <img src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Give me a beginner's guide to an activity</p>
+                <img src={assets.bulb_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Draft an email with a packing list for an upcoming trip</p>
+                <img src={assets.message_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>Outline a way to home routine: organizing my closet</p>
+                <img src={assets.code_icon} alt="" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="result">
+            <div className="result-title">
+              <img src={assets.user_icon} alt="" />
+              <p>{recentPrompt}</p>
+            </div>
+            <div className="result-data">
+              <img src={assets.gemini_icon} alt="" />
+              <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+            </div>
           </div>
-          <div className="card">
-            <p>Give me a beginner's guide to an activity</p>
-            <img src={assets.bulb_icon} alt="" />
-          </div>
-          <div className="card">
-            <p>Draft an email with a packing list for an upcoming trip</p>
-            <img src={assets.message_icon} alt="" />
-          </div>
-          <div className="card">
-            <p>Outline a way to home routine: organizing my closet</p>
-            <img src={assets.code_icon} alt="" />
-          </div>
-        </div>
+        )}
 
         <div className="main-bottom">
           <div className="search-box">
-            <input
-              type="text"
-              placeholder="Enter a prompt here"
-              name=""
-              id=""
-            />
+            <form onSubmit={handleSubmit}>
+              <input
+                onChange={(e) => setInput(e.target.value)}
+                // onSubmit={onSent()}
+                value={input}
+                type="text"
+                placeholder="Enter a prompt here"
+                name="text"
+                id=""
+              />
+            </form>
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img src={assets.send_icon} alt="" />
+              <img onClick={() => onSent()} src={assets.send_icon} alt="" />
             </div>
           </div>
           <p className="bottom-info">
