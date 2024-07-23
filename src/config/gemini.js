@@ -18,8 +18,6 @@ const VITE_GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const apiKey = VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
-// console.log(VITE_GEMINI_API_KEY);
-
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
 });
