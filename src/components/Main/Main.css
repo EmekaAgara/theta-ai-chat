@@ -92,6 +92,7 @@
   background-color: #f0f4f9;
   padding: 10px 20px;
   border-radius: 50px;
+  width: 100%;
 }
 
 .search-box img {
@@ -106,6 +107,7 @@
   outline: none;
   padding: 8px;
   font-size: 18px;
+  flex-grow: 1;
 }
 .search-box div {
   display: flex;

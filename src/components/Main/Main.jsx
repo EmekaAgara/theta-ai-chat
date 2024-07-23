@@ -85,6 +85,7 @@ function Main() {
                 onChange={(e) => setInput(e.target.value)}
                 // onSubmit={onSent()}
                 value={input}
+                autoFocus
                 type="text"
                 placeholder="Enter a prompt here"
                 name="text"
